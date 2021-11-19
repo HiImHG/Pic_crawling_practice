@@ -20,7 +20,7 @@ def main():
 
     keyword = input("請輸入要搜尋的食物: ")
     if " " in keyword:
-        keyword.replace(" ", "%20")
+        keyword = keyword.replace(" ", "%20")
 
     if not os.path.exists('./{}_{}'.format(keyword.replace("%20", " "), cur_time)):
         os.mkdir('./{}_{}'.format(keyword.replace("%20", " "), cur_time))
@@ -43,8 +43,8 @@ def main():
             print(food_pic_link)
             print("---------------------------------")
             try:
-                img_local_path = './{}_{}/{}_istockphoto_{}.jpg'.format(keyword.replace("%20", " "), cur_time,
-                                                                        keyword.replace("%20", " "), str(index+1))
+                img_local_path = './{}_{}/{}_istockphoto_page{}_{}.jpg'.format(keyword.replace("%20", " "), cur_time,
+                                                                        keyword.replace("%20", " "), i, str(index+1))
                 with open(img_local_path, 'wb') as f:
                     f.write(res_img.content)
             except OSError as o:
